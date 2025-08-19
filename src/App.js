@@ -1,12 +1,11 @@
 import './App.css';
 import React from 'react';
-import MyTask from './components/props';
+import TaskList from './components/TaskList';
 function App() {
-
+  
   return (
-    <div class="container">
-      <h1 class="heading">To-Do List</h1>
-      <MyTask taskCount="0"/>
+    <div>
+      <TaskList />
     </div>
   )
 }
