@@ -1,69 +1,89 @@
-/* TaskList */
-.task-list-container{
-  padding: 10px;
-  margin: 10px;
-  border: 2px solid gray;
-  border-radius: 10px;
+body {
+  margin: 20vh;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(500deg, #1a2a6c, #b21f1f, #fdbb2d);
+  background: linear-gradient(to right, #1a2a6c, #5f0a87);
+  display: flex;
+  justify-content: center;
 }
-.list-container{
-  margin-top: 20px;
-  padding: 5px;
+.container{
+  background-color: #ffffff;
+  padding: 30px;
+  width: 90vh;
+  border-radius: 20px;
+}
+.header{
+  display: flex;
+  justify-content: space-between;
+}
+.counter{
+  font-size: 20px;
+  font-weight: bold;
+}
+.input-container{
+  margin-top: 5vh;
+  border: 1px solid #5555;
+  border-radius: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+input{
+  font-size: 16px;
+  border: none;
+  padding: 10px;
+  outline: none;
+  margin: 10px;
+}
+.add-btn{
+  background-color: #f95c23;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 20px;
+  border: none;
+  border-radius: 30px;
+  padding: 20px;
+  width: 150px;
+  cursor: pointer;
 }
 .empty-msg{
   text-align: center;
 }
-.heading{
-  text-align: center;
+.todo-list-container{
+  margin-top:10vh ;
 }
-.task-list-content{
+.todos-list{
+  padding: 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
-.add-task-btn{
-  padding: 15px;
-  border: none;
-  border-radius: 10px;
-  font-size: large;
-  background-color: #0d6efd;
+.check-todo{
+  text-decoration: line-through;
+}
+.checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid black;
   cursor: pointer;
 }
-
-/* TaskForm */
-.task-form{
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-}
-.form-header{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.input-element{
-  padding: 10px;
-  border: 1px solid #000;
-  border-radius: 10px;
-}
-.exit-btn{
-  border: none;
+.todo-btn{
   background-color: transparent;
-  font-size:x-large;
-  cursor:pointer;
-}
-.submit-btn{
-  padding: 10px;
-  cursor: pointer;
   border: none;
-  border-radius: 10px;
-  background-color: #0ca1bf;
+  font-size: 20px;
+  margin-right: 10px;
+  cursor: pointer;
 }
 
-/* TaskCard */
-.card-container{
-  padding: 10px;
-  border: 1px solid #000;
-  border-radius: 10px;
-  margin: 10px;
-  display: flex;
-  justify-content: space-between;
+footer {
+  position: fixed;       
+  bottom: 0;
+  left: 0;
+  width: 100%;           
+  text-align: center;
+  padding: 12px 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
 }

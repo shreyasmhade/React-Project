@@ -1,13 +1,78 @@
-import './App.css';
-import React from 'react';
-import TaskList from './components/TaskList';
+import "./App.css";
+import React, { useState } from "react";
+import { FaTrash, FaEdit } from "react-icons/fa";
 function App() {
-  
+  const [todo, setTodo] = useState("");
+  const [todos, setTodos] = useState([]);
+
+  const handleAdd = (e) => {
+    setTodos([...todos, { todo, completed: false }]);
+    setTodo("");
+    e.preventDefault();
+  };
+  const handleChange = (e) => {
+    setTodo(e.target.value);
+  };
+  const handleCheck = (index) => {
+    const updatedTodos = [...todos];
+    updatedTodos[index].completed = !updatedTodos[index].completed;
+    setTodos(updatedTodos);
+  };
+
   return (
     <div>
-      <TaskList />
+      <div className="container">
+        <div className="header">
+          <h1>To-Do List</h1>
+          <p className="counter">{todos.length}</p>
+        </div>
+        <div>
+          <form onSubmit={handleAdd} className="input-container">
+            <input
+              placeholder="Add your task ..."
+              onChange={handleChange}
+              value={todo}
+              required
+            />
+            <button className="add-btn" type="submit">
+              Add
+            </button>
+          </form>
+        </div>
+        <div className="todo-list-container">
+          {todos.length === 0 ? (
+            <h3 className="empty-msg">You have not added any task yet !</h3>
+          ) : (
+            <div>
+              {todos.map((item, index) => (
+                <div className="todos-list">
+                  <input
+                    type="checkbox"
+                    className="checkbox"
+                    onClick={() => handleCheck(index)}
+                  />
+                  <h3
+                    className={item.completed ? "check-todo" : "not-check-todo"}
+                  >
+                    {item.todo}
+                  </h3>
+                  <div>
+                    <button className="todo-btn">
+                      <FaEdit />
+                    </button>
+                    <button className="todo-btn">
+                      <FaTrash />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+        <footer>Designed By Shreyas Mhade</footer>
+      </div>
     </div>
-  )
+  );
 }
 
 export default App;
