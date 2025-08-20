@@ -22,7 +22,7 @@ body {
   font-weight: bold;
 }
 .input-container{
-  margin-top: 5vh;
+  margin-top: 2vh;
   border: 1px solid #5555;
   border-radius: 30px;
   display: flex;
@@ -30,6 +30,7 @@ body {
 }
 input{
   font-size: 16px;
+  width: 500px;
   border: none;
   padding: 10px;
   outline: none;
@@ -58,8 +59,13 @@ input{
   justify-content: space-between;
   align-items: center;
 }
+.todo-text{
+  display: flex;
+  justify-content: space-between;
+}
 .check-todo{
   text-decoration: line-through;
+  color: #0000004d ;
 }
 .checkbox {
   width: 20px;
