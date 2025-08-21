@@ -1,17 +1,20 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { FaTrash, FaEdit, FaSave, FaTimes } from "react-icons/fa";
 
 function App() {
+  const [count , setCounter] = useState(0);
   const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([]);
-  const [editingIndex, setEditingIndex] = useState(-1);
+  const [editingIndex, setEditingIndex] = useState(null);
   const [editText, setEditText] = useState("");
 
+
   const handleAdd = (e) => {
+    e.preventDefault();
     setTodos([...todos, { todo, completed: false }]);
     setTodo("");
-    e.preventDefault();
+    setCounter(count+1)
   };
 
   const handleChange = (e) => {
@@ -22,6 +25,13 @@ function App() {
     const updatedTodos = [...todos];
     updatedTodos[index].completed = !updatedTodos[index].completed;
     setTodos(updatedTodos);
+    if (updatedTodos[index].completed === true){
+      console.log("task completed")
+      setCounter(count-1)
+    }else if (updatedTodos[index].completed === false) {
+      console.log("task not completed")
+      setCounter(count+1)
+    }
   };
 
   const handleEdit = (index) => {
@@ -33,12 +43,12 @@ function App() {
     const updatedTodos = [...todos];
     updatedTodos[index].todo = editText;
     setTodos(updatedTodos);
-    setEditingIndex(-1);
+    setEditingIndex(null);
     setEditText("");
   };
 
   const handleCancelEdit = () => {
-    setEditingIndex(-1);
+    setEditingIndex(null);
     setEditText("");
   };
 
@@ -49,6 +59,10 @@ function App() {
   const handleDelete = (index) => {
     const newTodos = todos.filter((item, i) => i !== index);
     setTodos(newTodos);
+    
+    if (todos[index].completed === false){
+      setCounter(count-1)
+    }
   };
 
   return (
@@ -56,7 +70,8 @@ function App() {
       <div className="container">
         <div className="header">
           <h1>To-Do List</h1>
-          <p className="counter">{todos.length}</p>
+          <p className="counter">Task left {count} !</p>
+          
         </div>
         <div>
           <form onSubmit={handleAdd} className="input-container">

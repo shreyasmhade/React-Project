@@ -21,6 +21,12 @@ body {
   font-size: 20px;
   font-weight: bold;
 }
+.store-data{
+  padding: 15px;
+  border-radius: 10px;
+  border:none;
+  cursor: pointer;
+}
 .input-container{
   margin-top: 2vh;
   border: 1px solid #5555;
