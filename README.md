@@ -16,8 +16,6 @@ It helps you add, edit, complete, and delete tasks while keeping track of the nu
 
 🔢 Live counter showing remaining tasks
 
-📱 Clean and responsive UI
-
 
 <h2>🛠️ Tech Stack</h2>
 
