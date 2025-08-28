@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { FaTrash, FaEdit, FaSave, FaTimes } from "react-icons/fa";
 
 function App() {
@@ -9,10 +9,9 @@ function App() {
   const [editingIndex, setEditingIndex] = useState(null);
   const [editText, setEditText] = useState("");
 
-
   const handleAdd = (e) => {
     e.preventDefault();
-    setTodos([...todos, { todo, completed: false }]);
+    setTodos([{ todo, completed: false },...todos]);
     setTodo("");
     setCounter(count+1)
   };
@@ -24,14 +23,19 @@ function App() {
   const handleCheck = (index) => {
     const updatedTodos = [...todos];
     updatedTodos[index].completed = !updatedTodos[index].completed;
-    setTodos(updatedTodos);
+    let newTodos;
     if (updatedTodos[index].completed === true){
-      console.log("task completed")
+      const [completedTask] = updatedTodos.splice(index,1)
+      newTodos =[...updatedTodos,completedTask]
+      setTodos(newTodos)
       setCounter(count-1)
     }else if (updatedTodos[index].completed === false) {
-      console.log("task not completed")
+      const [undoTask] = updatedTodos.splice(index,1)
+      newTodos =[undoTask,...updatedTodos]
+      setTodos(newTodos)
       setCounter(count+1)
     }
+    
   };
 
   const handleEdit = (index) => {
@@ -92,7 +96,7 @@ function App() {
           ) : (
             <div>
               {todos.map((item, index) => (
-                <div className="todos-list" key={index}>
+                <div className="todos-list" key={item.id}>
                   <input
                     type="checkbox"
                     className="checkbox"
